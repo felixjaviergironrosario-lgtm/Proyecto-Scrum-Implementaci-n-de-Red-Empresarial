@@ -1,0 +1,21 @@
+# this is a shell script which will be sourced at boot
+hostname Academico1
+# configurable user account
+USERNAME=cisco
+PASSWORD=cisco
+ip link set dev eth0 down
+sysctl -w net.ipv6.conf.eth0.accept_ra=1
+ip link set dev eth0 up
+
+cat > /tmp/d6.sh <<'EOF'
+#!/bin/sh
+case "$1" in
+  bound|renew|rebinding)
+    [ -n "$ipv6" ] && ip -6 addr add "$ipv6"/128 dev eth0 2>/dev/null
+    ;;
+esac
+EOF
+chmod +x /tmp/d6.sh
+
+udhcpc -i eth0 -b
+udhcpc6 -i eth0 -s /tmp/d6.sh -b

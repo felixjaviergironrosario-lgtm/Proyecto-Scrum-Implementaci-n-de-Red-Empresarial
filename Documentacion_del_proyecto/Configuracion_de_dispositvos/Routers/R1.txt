@@ -1,0 +1,237 @@
+Building configuration...
+
+
+Current configuration : 6108 bytes
+!
+! Last configuration change at 20:32:26 UTC Sat Nov 21 2026
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+enable secret 9 $9$mJVP8i8m6gsHM9$c4pEbRysu7at0Sq6/xAbm7GWfCMOdWZFlmDSj0CMtec
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip dhcp excluded-address 172.20.8.1 172.20.8.9
+ip dhcp excluded-address 172.20.0.1 172.20.0.9
+ip dhcp excluded-address 172.20.10.65
+!
+ip dhcp pool DOCENTES
+ network 172.20.8.0 255.255.255.0
+ default-router 172.20.8.1
+ dns-server 172.20.10.2
+ domain-name itla.local
+!
+ip dhcp pool ESTUDIANTES
+ network 172.20.0.0 255.255.248.0
+ default-router 172.20.0.1
+ dns-server 172.20.10.2
+ domain-name itla.local
+!
+ip dhcp pool GESTION
+ network 172.20.10.64 255.255.255.224
+ default-router 172.20.10.65
+ dns-server 172.20.10.2
+ domain-name itla.local
+!
+!
+!
+no ip domain lookup
+ip domain name itla.local
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+ipv6 dhcp pool V6-DOCENTES
+ address prefix 2001:25:20:1::/64
+ dns-server 2001:25:20:4::2
+ domain-name itla.local
+!
+ipv6 dhcp pool V6-ESTUDIANTES
+ address prefix 2001:25:20::/64
+ dns-server 2001:25:20:4::2
+ domain-name itla.local
+!
+ipv6 dhcp pool V6-GESTION
+ address prefix 2001:25:20:5::/64
+ dns-server 2001:25:20:4::2
+ domain-name itla.local
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username Admin privilege 15 secret 9 $9$1QBWZo18rgbYxP$7yUIujQ195mhElzIknETVPsefmUBorFLhGyglUNQOdk
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 172.20.10.161 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:25:20:9::1/64
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 172.20.8.1 255.255.255.0
+ ipv6 address 2001:25:20:1::1/64
+ ipv6 nd managed-config-flag
+ ipv6 nd other-config-flag
+ ipv6 dhcp server V6-DOCENTES
+!
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 172.20.0.1 255.255.248.0
+ ipv6 address 2001:25:20::1/64
+ ipv6 nd managed-config-flag
+ ipv6 nd other-config-flag
+ ipv6 dhcp server V6-ESTUDIANTES
+!
+interface GigabitEthernet0/1.30
+ encapsulation dot1Q 30
+ ip address 172.20.10.65 255.255.255.224
+ ipv6 address 2001:25:20:5::1/64
+ ipv6 nd managed-config-flag
+ ipv6 nd other-config-flag
+ ipv6 dhcp server V6-GESTION
+!
+interface GigabitEthernet0/1.40
+ encapsulation dot1Q 40
+ ip address 172.20.10.97 255.255.255.224
+ ipv6 address 2001:25:20:6::1/64
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 172.20.9.0 255.255.255.128 172.20.10.162
+ip route 172.20.9.128 255.255.255.128 172.20.10.162
+ip route 172.20.10.0 255.255.255.192 172.20.10.162
+ip ssh version 2
+!
+ipv6 route 2001:25:20:2::/64 2001:25:20:9::2
+ipv6 route 2001:25:20:3::/64 2001:25:20:9::2
+ipv6 route 2001:25:20:4::/64 2001:25:20:9::2
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec ^CCCC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^CCCCCC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^CCCCCC
+**************************************************************************
+* IOSv is stri
+-Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A5275z 111B894z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
+
+-Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A5275z 111B894z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
+
+-Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A4F56z 111B862z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
+
+-Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A4F56z 111B862z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
+ctly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner motd ^CCCCC
+=============================================================
+  ACCESO RESTRINGIDO - DONA PANCH TECH
+  MONITOREO CONSTANTE - ACCESO NO AUTORIZADO PROHIBIDO
+=============================================================
+^C
+!
+line con 0
+ exec-timeout 0 0
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 5 0
+ login local
+ transport input ssh
+!
+no scheduler allocate
+!
+end

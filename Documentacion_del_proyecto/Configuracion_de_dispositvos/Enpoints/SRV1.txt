@@ -1,0 +1,10 @@
+# this is a shell script which will be sourced at boot
+hostname Servidor1
+# configurable user account
+USERNAME=cisco
+PASSWORD=cisco
+ip link set dev eth0 up
+ip addr add 172.20.10.2/26 dev eth0
+ip route add default via 172.20.10.1
+ip -6 addr add 2001:25:20:4::2/64 dev eth0
+ip -6 route add default via 2001:25:20:4::1

@@ -1,0 +1,5 @@
+# this is a shell script which will be sourced at boot
+hostname Estudiante1
+# configurable user account
+USERNAME=cisco
+PASSWORD=cisco
