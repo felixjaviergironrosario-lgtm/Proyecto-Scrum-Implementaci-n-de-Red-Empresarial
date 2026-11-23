@@ -14,8 +14,8 @@ annotations:
     text_unit: pt
     thickness: 1
     type: text
-    x1: -1320.0
-    y1: -240.0
+    x1: -1280.0
+    y1: -200.0
     z_index: 0
   - border_color: '#00000000'
     border_style: ''
@@ -268,9 +268,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3458 bytes
+          Current configuration : 3450 bytes
           !
-          ! Last configuration change at 20:32:28 UTC Sat Nov 21 2026 by Admin
+          ! Last configuration change at 01:23:18 UTC Mon Nov 16 2026 by Admin
           !
           version 15.2
           service timestamps debug datetime msec
@@ -329,23 +329,23 @@ nodes:
            switchport access vlan 70
            switchport mode access
            negotiation auto
-           no cdp tlv app
+           no cdp enable
            spanning-tree portfast edge
           !
           interface GigabitEthernet0/1
            switchport access vlan 70
            switchport mode access
            negotiation auto
-           no cdp tlv app
+           no cdp enable
            spanning-tree portfast edge
           !
           interface GigabitEthernet0/2
            negotiation auto
-           no cdp tlv app
+           no cdp enable
           !
           interface GigabitEthernet0/3
            negotiation auto
-           no cdp tlv app
+           no cdp enable
           !
           ip forward-protocol nd
           !
@@ -364,7 +364,7 @@ nodes:
           !
           control-plane
           !
-          banner exec ^CCCCCC
+          banner exec ^CCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -373,7 +373,7 @@ nodes:
 
           By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
           ^C
-          banner incoming ^CCCCCC
+          banner incoming ^CCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -382,7 +382,7 @@ nodes:
 
           By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
           ^C
-          banner login ^CCCCCC
+          banner login ^CCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -391,7 +391,7 @@ nodes:
 
           By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
           ^C
-          banner motd ^CCCC !!! ACCESSO RESTRINGIDO !!! ^C
+          banner motd ^CCC !!! ACCESSO RESTRINGIDO !!! ^C
           !
           line con 0
            exec-timeout 0 0
@@ -450,7 +450,7 @@ nodes:
 
           Current configuration : 4802 bytes
           !
-          ! Last configuration change at 20:32:19 UTC Sat Nov 21 2026 by Admin
+          ! Last configuration change at 19:04:02 UTC Mon Nov 23 2026 by Admin
           !
           version 15.2
           service timestamps debug datetime msec
@@ -698,7 +698,7 @@ nodes:
 
           Current configuration : 4285 bytes
           !
-          ! Last configuration change at 20:32:23 UTC Sat Nov 21 2026 by Admin
+          ! Last configuration change at 19:04:02 UTC Mon Nov 23 2026 by Admin
           !
           version 15.2
           service timestamps debug datetime msec
@@ -1098,10 +1098,9 @@ nodes:
         content: |-
           Building configuration...
 
-
           Current configuration : 6108 bytes
           !
-          ! Last configuration change at 20:32:26 UTC Sat Nov 21 2026
+          ! Last configuration change at 19:04:02 UTC Mon Nov 23 2026
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1183,7 +1182,7 @@ nodes:
           !
           !
           !
-          username Admin privilege 15 secret 9 $9$1QBWZo18rgbYxP$7yUIujQ195mhElzIknETVPsefmUBorFLhGyglUNQOdk
+          username Admin privilege 15 secret 9 $9$FqElGxRDpG8Blv$DIxXMhgFZSkM62gMzWguhGderbLDoM0pxueCl2OklUQ
           !
           redundancy
           !
@@ -1372,9 +1371,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5765 bytes
+          Current configuration : 5806 bytes
           !
-          ! Last configuration change at 02:56:29 UTC Wed Nov 18 2026 by Admin
+          ! Last configuration change at 19:04:03 UTC Mon Nov 23 2026 by Admin
           !
           version 15.2
           service timestamps debug datetime msec
@@ -1510,7 +1509,7 @@ nodes:
           !
           control-plane
           !
-          banner exec ^CCCCC
+          banner exec ^CCCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -1519,7 +1518,7 @@ nodes:
 
           By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
           ^C
-          banner incoming ^CCCCC
+          banner incoming ^CCCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -1528,7 +1527,7 @@ nodes:
 
           By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
           ^C
-          banner login ^CCCCC
+          banner login ^CCCCCC
           IOSv - Cisco Systems Confidential -
 
           Supplemental End User License Restrictions
@@ -1553,7 +1552,39 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SWM1
-           event timer countdown time 60
+           event timer countdown name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           time 60
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
