@@ -14,7 +14,7 @@ annotations:
     text_unit: pt
     thickness: 1
     type: text
-    x1: -1280.0
+    x1: -1320.0
     y1: -200.0
     z_index: 0
   - border_color: '#00000000'
@@ -601,59 +601,25 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SW4
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 60
+           event timer countdown time 60
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
            action 1.3 cli command "vtp mode server"
            action 1.4 cli command "vtp domain producto1"
            action 1.5 cli command "vtp password producto1"
-           action 1.6 cli command "end"
-           action 2.0 cli command "vtp primary vlan force"
-           action 3.0 cli command "configure terminal"
-           action 3.1 cli command "vlan 10"
-           action 3.2 cli command "name DOCENTES"
-           action 3.3 cli command "vlan 20"
-           action 3.4 cli command "name ESTUDIANTES"
-           action 3.5 cli command "vlan 30"
-           action 3.6 cli command "name GESTION"
-           action 3.7 cli command "vlan 40"
-           action 3.8 cli command "name VOZ"
-           action 3.9 cli command "vlan 999"
-           action 4.0 cli command "name BLACKHULL"
-           action 4.1 cli command "end"
+           action 1.6 cli command "vtp primary vlan force"
+           action 2.0 cli command "vlan 10"
+           action 2.1 cli command "name DOCENTES"
+           action 2.2 cli command "vlan 20"
+           action 2.3 cli command "name ESTUDIANTES"
+           action 2.4 cli command "vlan 30"
+           action 2.5 cli command "name GESTION"
+           action 2.6 cli command "vlan 40"
+           action 2.7 cli command "name VOZ"
+           action 2.8 cli command "vlan 999"
+           action 2.9 cli command "name BLACKHULL"
+           action 3.0 cli command "end"
            action 9.0 syslog msg "VTP_SW4 aplicado"
           !
           end
@@ -849,39 +815,7 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SW5
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 30
+           event timer countdown time 30
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
@@ -1098,9 +1032,10 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 6108 bytes
+
+          Current configuration : 6707 bytes
           !
-          ! Last configuration change at 19:04:02 UTC Mon Nov 23 2026
+          ! Last configuration change at 21:37:29 UTC Mon Nov 23 2026
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1182,7 +1117,7 @@ nodes:
           !
           !
           !
-          username Admin privilege 15 secret 9 $9$FqElGxRDpG8Blv$DIxXMhgFZSkM62gMzWguhGderbLDoM0pxueCl2OklUQ
+          username Admin privilege 15 secret 9 $9$7yRLf85OkagVQt$pgsaindRKk4Cap2CHQkTvnQCUSR2zddrDWgXrk3mS3.
           !
           redundancy
           !
@@ -1275,7 +1210,7 @@ nodes:
           !
           control-plane
           !
-          banner exec ^CCCC
+          banner exec ^CCCCC
           **************************************************************************
           * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
           * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1284,7 +1219,7 @@ nodes:
           * purposes is expressly prohibited except as otherwise authorized by     *
           * Cisco in writing.                                                      *
           **************************************************************************^C
-          banner incoming ^CCCCCC
+          banner incoming ^CCCCCCC
           **************************************************************************
           * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
           * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1293,7 +1228,7 @@ nodes:
           * purposes is expressly prohibited except as otherwise authorized by     *
           * Cisco in writing.                                                      *
           **************************************************************************^C
-          banner login ^CCCCCC
+          banner login ^CCCCCCC
           **************************************************************************
           * IOSv is stri
           -Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A5275z 111B894z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
@@ -1310,7 +1245,7 @@ nodes:
           * purposes is expressly prohibited except as otherwise authorized by     *
           * Cisco in writing.                                                      *
           **************************************************************************^C
-          banner motd ^CCCCC
+          banner motd ^CCCCCC
           =============================================================
             ACCESO RESTRINGIDO - DONA PANCH TECH
             MONITOREO CONSTANTE - ACCESO NO AUTORIZADO PROHIBIDO
@@ -1330,6 +1265,20 @@ nodes:
            transport input ssh
           !
           no scheduler allocate
+          event manager applet SSH_BOOT
+           event timer countdown time 45
+           action 1.0 cli command "enable"
+           action 1.1 cli command "configure terminal"
+           action 1.2 cli command "ip domain-name itla.local"
+           action 1.3 cli command "ip ssh version 2"
+           action 1.4 cli command "username Admin privilege 15 secret Cisco123"
+           action 1.5 cli command "line vty 0 15"
+           action 1.6 cli command "login local"
+           action 1.7 cli command "transport input ssh"
+           action 1.8 cli command "exit"
+           action 1.9 cli command "crypto key generate rsa modulus 2048"
+           action 2.0 cli command "end"
+           action 9.0 syslog msg "SSH_BOOT aplicado"
           !
           end
     cpu_limit: null
@@ -1552,64 +1501,21 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SWM1
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 60
+           event timer countdown time 60
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
            action 1.3 cli command "vtp mode server"
            action 1.4 cli command "vtp domain producto1"
            action 1.5 cli command "vtp password producto1"
-           action 1.6 cli command "end"
-           action 2.0 cli command "vtp primary vlan force"
-           action 3.0 cli command "configure terminal"
-           action 3.1 cli command "vlan 50"
-           action 3.2 cli command "name FINANZAS"
-           action 3.3 cli command "vlan 60"
-           action 3.4 cli command "name ACADEMICOS"
-           action 3.5 cli command "vlan 999"
-           action 3.6 cli command "name BLACKHULL"
-           action 3.7 cli command "end"
-           action 4.0 wait 10
-           action 4.1 cli command "configure terminal"
-           action 4.2 cli command "interface vlan 50"
-           action 4.3 cli command "shutdown"
-           action 4.4 cli command "no shutdown"
-           action 4.5 cli command "interface vlan 60"
-           action 4.6 cli command "shutdown"
-           action 4.7 cli command "no shutdown"
-           action 4.8 cli command "end"
+           action 1.6 cli command "vtp primary vlan force"
+           action 2.0 cli command "vlan 50"
+           action 2.1 cli command "name FINANZAS"
+           action 2.2 cli command "vlan 60"
+           action 2.3 cli command "name ACADEMICOS"
+           action 2.4 cli command "vlan 999"
+           action 2.5 cli command "name BLACKHULL"
+           action 2.6 cli command "end"
            action 9.0 syslog msg "VTP_SWM1 aplicado"
           !
           end
