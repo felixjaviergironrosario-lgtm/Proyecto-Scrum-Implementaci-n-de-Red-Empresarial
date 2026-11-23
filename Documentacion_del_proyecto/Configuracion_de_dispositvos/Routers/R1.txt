@@ -1,9 +1,9 @@
 Building configuration...
 
 
-Current configuration : 6108 bytes
+Current configuration : 6707 bytes
 !
-! Last configuration change at 20:32:26 UTC Sat Nov 21 2026
+! Last configuration change at 21:37:29 UTC Mon Nov 23 2026
 !
 version 15.9
 service timestamps debug datetime msec
@@ -85,7 +85,7 @@ multilink bundle-name authenticated
 !
 !
 !
-username Admin privilege 15 secret 9 $9$1QBWZo18rgbYxP$7yUIujQ195mhElzIknETVPsefmUBorFLhGyglUNQOdk
+username Admin privilege 15 secret 9 $9$7yRLf85OkagVQt$pgsaindRKk4Cap2CHQkTvnQCUSR2zddrDWgXrk3mS3.
 !
 redundancy
 !
@@ -178,7 +178,7 @@ ipv6 ioam timestamp
 !
 control-plane
 !
-banner exec ^CCCC
+banner exec ^CCCCC
 **************************************************************************
 * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
 * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -187,7 +187,7 @@ banner exec ^CCCC
 * purposes is expressly prohibited except as otherwise authorized by     *
 * Cisco in writing.                                                      *
 **************************************************************************^C
-banner incoming ^CCCCCC
+banner incoming ^CCCCCCC
 **************************************************************************
 * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
 * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -196,7 +196,7 @@ banner incoming ^CCCCCC
 * purposes is expressly prohibited except as otherwise authorized by     *
 * Cisco in writing.                                                      *
 **************************************************************************^C
-banner login ^CCCCCC
+banner login ^CCCCCCC
 **************************************************************************
 * IOSv is stri
 -Traceback= 13148Bz 16079Ez 1604DBz 1602B8z 15A275z 15AE3Fz 1A5275z 111B894z 114DF78z - Process "TTY Background", CPU hog, PC 0x00155F4C
@@ -213,7 +213,7 @@ ctly limited to use for evaluation, demonstration and IOS  *
 * purposes is expressly prohibited except as otherwise authorized by     *
 * Cisco in writing.                                                      *
 **************************************************************************^C
-banner motd ^CCCCC
+banner motd ^CCCCCC
 =============================================================
   ACCESO RESTRINGIDO - DONA PANCH TECH
   MONITOREO CONSTANTE - ACCESO NO AUTORIZADO PROHIBIDO
@@ -233,5 +233,19 @@ line vty 5 15
  transport input ssh
 !
 no scheduler allocate
+event manager applet SSH_BOOT
+ event timer countdown time 45
+ action 1.0 cli command "enable"
+ action 1.1 cli command "configure terminal"
+ action 1.2 cli command "ip domain-name itla.local"
+ action 1.3 cli command "ip ssh version 2"
+ action 1.4 cli command "username Admin privilege 15 secret Cisco123"
+ action 1.5 cli command "line vty 0 15"
+ action 1.6 cli command "login local"
+ action 1.7 cli command "transport input ssh"
+ action 1.8 cli command "exit"
+ action 1.9 cli command "crypto key generate rsa modulus 2048"
+ action 2.0 cli command "end"
+ action 9.0 syslog msg "SSH_BOOT aplicado"
 !
 end
