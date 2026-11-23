@@ -18,8 +18,8 @@ Integrantes de la implementación:
         
     - Configurar protocolos de gestión de VLANs (VTP versión 3) y seguridad perimetral de acceso.
 
-![[Resultado topologia.png]]
 
 
+[Resultado final de la topologia](https://github.com/felixjaviergironrosario-lgtm/Proyecto-Scrum-Implementaci-n-de-Red-Empresarial/blob/master/Resultado_topologia.png)
 
 **🎓 Instituto Tecnológico de Las Américas (ITLA)** · Centro de Excelencia de Redes y Seguridad _Fundamentos de Enrutamiento  (TI-202) · Equipo 3_
