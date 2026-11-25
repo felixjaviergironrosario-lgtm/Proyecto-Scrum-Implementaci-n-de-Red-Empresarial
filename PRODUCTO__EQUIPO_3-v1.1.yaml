@@ -601,39 +601,7 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SW4_VLANS
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 50
+           event timer countdown time 50
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vlan 10"
@@ -842,39 +810,7 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SW5
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 30
+           event timer countdown time 30
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
@@ -1560,39 +1496,7 @@ nodes:
            transport input ssh
           !
           event manager applet VTP_SWM1_BASE
-           event timer countdown name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           time 25
+           event timer countdown time 25
            action 1.0 cli command "enable"
            action 1.1 cli command "configure terminal"
            action 1.2 cli command "vtp version 3"
